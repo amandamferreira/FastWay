@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Usuários{% endblock %}
+{% block content %}
+<h2 class="fw-section-title">Usuários</h2>
+
+<div class="fw-list">
+  {% for u in users %}
+    <a class="fw-item" href="{{ url_for('user_detail', user_id=u.get('id') or u.get('_id')) }}">
+      <img class="fw-avatar"
+           src="{{ field(u,'avatar','image','photo','imageUrl', default='https://placehold.co/200x200?text=U') }}"
+           alt="{{ field(u,'name','nome','username', default='Usuário') }}">
+      <div class="fw-item-body">
+        <div class="fw-item-title">{{ field(u,'name','nome','username', default='Usuário') }}</div>
+        <div class="fw-item-sub">{{ field(u,'email','contact','phone','telefone', default='') }}</div>
+      </div>
+      <span class="fw-chevron">›</span>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

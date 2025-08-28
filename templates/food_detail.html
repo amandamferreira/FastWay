@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Comida{% endblock %}
+{% block content %}
+<article class="fw-detail">
+  <img class="fw-banner"
+       src="{{ field(food,'image','imageUrl','foto', default='https://placehold.co/1200x400?text=Food') }}"
+       alt="{{ field(food,'name','title','nome', default='Comida') }}">
+  <div class="fw-detail-body">
+    <h2>{{ field(food,'name','title','nome', default='Comida') }}</h2>
+    <p class="muted">
+      Preço: R$ {{ field(food,'price','preco', default='—') }} •
+      Categoria: {{ field(food,'category','categoria', default='—') }}
+    </p>
+  </div>
+
+  <pre class="fw-json">{{ food | tojson(indent=2) }}</pre>
+</article>
+{% endblock %}

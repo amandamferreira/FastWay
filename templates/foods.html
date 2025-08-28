@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Comidas{% endblock %}
+{% block content %}
+<h2 class="fw-section-title">Comidas</h2>
+
+<div class="fw-grid">
+  {% for f in foods %}
+  <a class="fw-card" href="{{ url_for('food_detail', food_id=f.get('id') or f.get('_id')) }}">
+    <img class="fw-thumb"
+         src="{{ field(f,'image','imageUrl','foto', default='https://placehold.co/600x400?text=Food') }}"
+         alt="{{ field(f,'name','title','nome', default='Comida') }}">
+    <div class="fw-card-body">
+      <div class="fw-price">R$ {{ field(f,'price','preco', default='—') }}</div>
+      <div class="fw-name">{{ field(f,'name','title','nome', default='(sem nome)') }}</div>
+      <div class="fw-sub">{{ field(f,'restaurantName','restaurant','restaurante','category','categoria', default='') }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

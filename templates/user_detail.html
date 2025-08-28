@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Usuário{% endblock %}
+{% block content %}
+<article class="fw-detail">
+  <div class="fw-detail-hero">
+    <img class="fw-avatar lg"
+         src="{{ field(user,'avatar','image','photo','imageUrl', default='https://placehold.co/300x300?text=U') }}"
+         alt="{{ field(user,'name','nome','username', default='Usuário') }}">
+    <h2>{{ field(user,'name','nome','username', default='Usuário') }}</h2>
+    <p class="muted">{{ field(user,'email','contact','phone','telefone', default='') }}</p>
+  </div>
+
+  <pre class="fw-json">{{ user | tojson(indent=2) }}</pre>
+</article>
+{% endblock %}

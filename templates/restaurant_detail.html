@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Restaurante{% endblock %}
+{% block content %}
+<article class="fw-detail">
+  <img class="fw-banner"
+       src="{{ field(restaurant,'image','imageUrl','logo', default='https://placehold.co/1200x400?text=Restaurante') }}"
+       alt="{{ field(restaurant,'name','nome','title', default='Restaurante') }}">
+  <div class="fw-detail-body">
+    <h2>{{ field(restaurant,'name','nome','title', default='Restaurante') }}</h2>
+    <p class="muted">{{ field(restaurant,'category','categoria','type','tipo', default='') }}</p>
+  </div>
+
+  <pre class="fw-json">{{ restaurant | tojson(indent=2) }}</pre>
+</article>
+{% endblock %}

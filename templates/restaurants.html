@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Restaurantes{% endblock %}
+{% block content %}
+<h2 class="fw-section-title">Restaurantes</h2>
+
+<div class="fw-grid">
+  {% for r in restaurants %}
+  <a class="fw-card" href="{{ url_for('restaurant_detail', rest_id=r.get('id') or r.get('_id')) }}">
+    <img class="fw-thumb"
+         src="{{ field(r,'image','imageUrl','logo', default='https://placehold.co/600x400?text=Rest') }}"
+         alt="{{ field(r,'name','nome','title', default='Restaurante') }}">
+    <div class="fw-card-body">
+      <div class="fw-name">{{ field(r,'name','nome','title', default='Restaurante') }}</div>
+      <div class="fw-sub">{{ field(r,'category','categoria','type','tipo', default='') }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}
